@@ -38,10 +38,13 @@ import java.util.Map;
 public class No1TwoSum {
     public static void main(String[] args) {
         // 测试数据
+        // 示例1
         int[] nums1 = {2, 7, 11, 15};
         int target1 = 9;
+        // 示例2
         int[] nums2 = {3, 2, 4};
         int target2 = 6;
+        // 示例3
         int[] nums3 = {3, 3};
         int target3 = 6;
 
@@ -62,13 +65,6 @@ public class No1TwoSum {
 }
 
 class No1TwoSumSolution {
-    /**
-     * 个人题解
-     *
-     * @param nums   数组
-     * @param target 目标值
-     * @return 结果
-     */
     public int[] twoSum(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
@@ -80,13 +76,6 @@ class No1TwoSumSolution {
         return new int[0];
     }
 
-    /**
-     * 官方答案
-     *
-     * @param nums   数组
-     * @param target 目标值
-     * @return 结果
-     */
     public int[] officialAnswer(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>(nums.length * 2);
         for (int i = 0; i < nums.length; i++) {
