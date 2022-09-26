@@ -56,6 +56,8 @@ public class No1TwoSum {
         System.out.println(Arrays.toString(no1TwoSumSolution.twoSum(nums2, target2)));
         System.out.println(Arrays.toString(no1TwoSumSolution.twoSum(nums3, target3)));
 
+        System.out.println();
+
         // 官方答案测试
         System.out.println("官方答案：");
         System.out.println(Arrays.toString(no1TwoSumSolution.officialAnswer(nums1, target1)));
