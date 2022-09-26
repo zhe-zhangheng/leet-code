@@ -52,15 +52,15 @@ public class No1TwoSum {
 
         // 个人答案测试
         System.out.println("个人答案：");
-        no1TwoSumSolution.test1(nums1, target1);
-        no1TwoSumSolution.test1(nums2, target2);
-        no1TwoSumSolution.test1(nums3, target3);
+        System.out.println(Arrays.toString(no1TwoSumSolution.twoSum(nums1, target1)));
+        System.out.println(Arrays.toString(no1TwoSumSolution.twoSum(nums2, target2)));
+        System.out.println(Arrays.toString(no1TwoSumSolution.twoSum(nums3, target3)));
 
         // 官方答案测试
         System.out.println("官方答案：");
-        no1TwoSumSolution.test2(nums1, target1);
-        no1TwoSumSolution.test2(nums2, target2);
-        no1TwoSumSolution.test2(nums3, target3);
+        System.out.println(Arrays.toString(no1TwoSumSolution.officialAnswer(nums1, target1)));
+        System.out.println(Arrays.toString(no1TwoSumSolution.officialAnswer(nums2, target2)));
+        System.out.println(Arrays.toString(no1TwoSumSolution.officialAnswer(nums3, target3)));
     }
 }
 
@@ -86,13 +86,5 @@ class No1TwoSumSolution {
             map.put(nums[i], i);
         }
         return new int[0];
-    }
-
-    public void test1(int[] nums, int target) {
-        System.out.println(Arrays.toString(twoSum(nums, target)));
-    }
-
-    public void test2(int[] nums, int target) {
-        System.out.println(Arrays.toString(officialAnswer(nums, target)));
     }
 }
