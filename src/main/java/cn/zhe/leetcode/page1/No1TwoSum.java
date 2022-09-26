@@ -37,15 +37,31 @@ import java.util.Map;
  */
 public class No1TwoSum {
     public static void main(String[] args) {
-        int[][] numss = {{2, 7, 11, 15}, {3, 2, 4}, {3, 3}};
-        int[] targets = {9, 6, 6};
+        // 测试数据
+        int[] nums1 = {2, 7, 11, 15};
+        int target1 = 9;
+        int[] nums2 = {3, 2, 4};
+        int target2 = 6;
+        int[] nums3 = {3, 3};
+        int target3 = 6;
 
-        Solution solution = new Solution();
-        solution.test(numss, targets);
+        No1TwoSumSolution no1TwoSumSolution = new No1TwoSumSolution();
+
+        // 个人答案测试
+        System.out.println("个人答案：");
+        no1TwoSumSolution.test1(nums1, target1);
+        no1TwoSumSolution.test1(nums2, target2);
+        no1TwoSumSolution.test1(nums3, target3);
+
+        // 官方答案测试
+        System.out.println("官方答案：");
+        no1TwoSumSolution.test2(nums1, target1);
+        no1TwoSumSolution.test2(nums2, target2);
+        no1TwoSumSolution.test2(nums3, target3);
     }
 }
 
-class Solution {
+class No1TwoSumSolution {
     /**
      * 个人题解
      *
@@ -83,15 +99,11 @@ class Solution {
         return new int[0];
     }
 
-    public void test(int[][] numss, int[] targets) {
-        System.out.println("个人答案：");
-        for (int i = 0; i < numss.length; i++) {
-            System.out.println(Arrays.toString(twoSum(numss[i], targets[i])));
-        }
+    public void test1(int[] nums, int target) {
+        System.out.println(Arrays.toString(twoSum(nums, target)));
+    }
 
-        System.out.println("官方答案：");
-        for (int i = 0; i < numss.length; i++) {
-            System.out.println(Arrays.toString(officialAnswer(numss[i], targets[i])));
-        }
+    public void test2(int[] nums, int target) {
+        System.out.println(Arrays.toString(officialAnswer(nums, target)));
     }
 }
