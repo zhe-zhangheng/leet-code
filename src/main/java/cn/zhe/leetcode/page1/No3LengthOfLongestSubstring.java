@@ -44,8 +44,12 @@ public class No3LengthOfLongestSubstring {
         String s2 = "bbbbb";
         // 示例3
         String s3 = "pwwkew";
-
+        // 示例4
         String s4 = "pwwkezdwpw";
+        // 示例5
+        String s5 = "";
+        // 示例6
+        String s6 = " ";
 
         No3LengthOfLongestSubstringSolution no3LengthOfLongestSubstringSolution = new No3LengthOfLongestSubstringSolution();
 
@@ -54,6 +58,8 @@ public class No3LengthOfLongestSubstring {
         System.out.println(no3LengthOfLongestSubstringSolution.lengthOfLongestSubstring(s2));
         System.out.println(no3LengthOfLongestSubstringSolution.lengthOfLongestSubstring(s3));
         System.out.println(no3LengthOfLongestSubstringSolution.lengthOfLongestSubstring(s4));
+        System.out.println(no3LengthOfLongestSubstringSolution.lengthOfLongestSubstring(s5));
+        System.out.println(no3LengthOfLongestSubstringSolution.lengthOfLongestSubstring(s6));
 
         System.out.println();
 
@@ -62,6 +68,8 @@ public class No3LengthOfLongestSubstring {
         System.out.println(no3LengthOfLongestSubstringSolution.officialAnswer(s2));
         System.out.println(no3LengthOfLongestSubstringSolution.officialAnswer(s3));
         System.out.println(no3LengthOfLongestSubstringSolution.officialAnswer(s4));
+        System.out.println(no3LengthOfLongestSubstringSolution.officialAnswer(s5));
+        System.out.println(no3LengthOfLongestSubstringSolution.officialAnswer(s6));
     }
 }
 
@@ -69,7 +77,7 @@ class No3LengthOfLongestSubstringSolution {
     public int lengthOfLongestSubstring(String s) {
         int sLength = s.length();
         Set<Character> characterSet = new HashSet<>(128);
-        int result = 1;
+        int result = 0;
         for1:
         for (int i = 0; i < sLength; i++) {
             char head = s.charAt(i);
