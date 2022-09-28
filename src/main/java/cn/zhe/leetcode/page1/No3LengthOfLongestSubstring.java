@@ -50,6 +50,12 @@ public class No3LengthOfLongestSubstring {
         String s5 = "";
         // 示例6
         String s6 = " ";
+        // 示例7
+        String s7 = "au";
+        // 示例8
+        String s8 = "tmmzuxt";
+        // 示例9
+        String s9 = "ohvhjdml";
 
         No3LengthOfLongestSubstringSolution no3LengthOfLongestSubstringSolution = new No3LengthOfLongestSubstringSolution();
 
@@ -60,6 +66,9 @@ public class No3LengthOfLongestSubstring {
         System.out.println(no3LengthOfLongestSubstringSolution.lengthOfLongestSubstring(s4));
         System.out.println(no3LengthOfLongestSubstringSolution.lengthOfLongestSubstring(s5));
         System.out.println(no3LengthOfLongestSubstringSolution.lengthOfLongestSubstring(s6));
+        System.out.println(no3LengthOfLongestSubstringSolution.lengthOfLongestSubstring(s7));
+        System.out.println(no3LengthOfLongestSubstringSolution.lengthOfLongestSubstring(s8));
+        System.out.println(no3LengthOfLongestSubstringSolution.lengthOfLongestSubstring(s9));
 
         System.out.println();
 
@@ -70,6 +79,9 @@ public class No3LengthOfLongestSubstring {
         System.out.println(no3LengthOfLongestSubstringSolution.officialAnswer(s4));
         System.out.println(no3LengthOfLongestSubstringSolution.officialAnswer(s5));
         System.out.println(no3LengthOfLongestSubstringSolution.officialAnswer(s6));
+        System.out.println(no3LengthOfLongestSubstringSolution.officialAnswer(s7));
+        System.out.println(no3LengthOfLongestSubstringSolution.officialAnswer(s8));
+        System.out.println(no3LengthOfLongestSubstringSolution.officialAnswer(s9));
     }
 }
 
@@ -77,7 +89,7 @@ class No3LengthOfLongestSubstringSolution {
     public int lengthOfLongestSubstring(String s) {
         int sLength = s.length();
         Set<Character> characterSet = new HashSet<>(128);
-        int result = 0;
+        int result = sLength == 1 ? 1 : 0;
         for1:
         for (int i = 0; i < sLength; i++) {
             char head = s.charAt(i);
@@ -85,15 +97,30 @@ class No3LengthOfLongestSubstringSolution {
             for (int j = i + 1; j < sLength; j++) {
                 char tail = s.charAt(j);
 
-                if (head == tail || characterSet.contains(tail)) {
+                if (head == tail) {
                     result = Math.max(j - i, result);
+
                     characterSet.clear();
+
+                    continue for1;
+                } else if (characterSet.contains(tail)) {
+                    result = Math.max(j - i, result);
+
+                    characterSet.clear();
+
+                    i = s.substring(0, j).lastIndexOf(tail);
+
                     continue for1;
                 }
 
                 characterSet.add(tail);
             }
+
+            result = Math.max(sLength - i, result);
+
+            break;
         }
+
         return result;
     }
 
