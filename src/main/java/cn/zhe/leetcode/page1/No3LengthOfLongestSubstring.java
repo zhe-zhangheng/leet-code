@@ -88,8 +88,12 @@ public class No3LengthOfLongestSubstring {
 class No3LengthOfLongestSubstringSolution {
     public int lengthOfLongestSubstring(String s) {
         int sLength = s.length();
+        if (sLength == 0 || sLength == 1) {
+            return sLength;
+        }
+
         Set<Character> characterSet = new HashSet<>(128);
-        int result = sLength == 1 ? 1 : 0;
+        int result = 0;
         for1:
         for (int i = 0; i < sLength; i++) {
             char head = s.charAt(i);
