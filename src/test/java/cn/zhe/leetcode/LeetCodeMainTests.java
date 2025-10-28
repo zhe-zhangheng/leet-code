@@ -8,8 +8,57 @@ import java.util.Map;
 
 class LeetCodeMainTests {
     public static void main(String[] args) {
+        testLengthOfLongestSubstring();
         // testAddTwoNumbers();
         // testTwoSum();
+    }
+
+    public static void testLengthOfLongestSubstring() {
+        // String str = "abcabcbb";  // 3
+        // String str = "bbbbb";  // 1
+        // String str = "pwwkew";  // 3
+        // String str = "cc";  // 1
+        // String str = "abc";  // 3
+        String str = "dvdf";  // 3
+        int maxSubLength = lengthOfLongestSubstring(str);
+        System.out.println(maxSubLength);
+    }
+
+    public static int lengthOfLongestSubstring(String s) {
+        int head = 0, tail = 0, maxSubLength = 0, strLength = s.length();
+        Map<String, Integer> subStrMap = new HashMap<>();
+        while (tail < strLength) {
+            String headChar = String.valueOf(s.charAt(head));
+            if (head == tail) {
+                subStrMap.put(headChar, head);
+                tail++;
+                continue;
+            }
+
+            String tailChar = String.valueOf(s.charAt(tail));
+            if (!subStrMap.containsKey(tailChar)) {
+                subStrMap.put(tailChar, tail);
+                tail++;
+                continue;
+            }
+
+            maxSubLength = Math.max(tail - head, maxSubLength);
+
+            head = subStrMap.get(tailChar) + 1;
+
+            int finalHead = head;
+            subStrMap.entrySet().removeIf(item-> item.getValue() < finalHead);
+
+            subStrMap.put(tailChar, tail);
+
+            if (tail == strLength - 1) {
+                break;
+            }
+
+            tail++;
+        }
+
+        return Math.max(s.substring(head, tail).length(), maxSubLength);
     }
 
     public static void testAddTwoNumbers() {
