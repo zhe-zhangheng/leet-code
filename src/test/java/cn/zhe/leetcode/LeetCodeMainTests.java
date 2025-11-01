@@ -7,10 +7,65 @@ import java.util.HashMap;
 import java.util.Map;
 
 class LeetCodeMainTests {
+    /**
+     * testTwoSum();
+     * testAddTwoNumbers();
+     * testLengthOfLongestSubstring();
+     *
+     * @param args args
+     */
     public static void main(String[] args) {
-        testLengthOfLongestSubstring();
-        // testAddTwoNumbers();
-        // testTwoSum();
+        testFindMedianSortedArrays();
+    }
+
+    public static void testFindMedianSortedArrays() {
+        // 测试数据
+        // 示例1
+        // int[] nums1 = {1, 3}, nums2 = {2};
+        // 示例2
+        // int[] nums1 = {1, 2}, nums2 = {3, 4};
+        // 示例3
+        int[] nums1 = {1, 3, 5, 6, 7}, nums2 = {2, 3, 5};
+        double median = findMedianSortedArrays(nums1, nums2);
+        System.out.println(median);
+    }
+
+    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int totalLength = nums1.length + nums2.length;
+        int[] nums = new int[totalLength];
+        int i = 0, j = 0;
+        while (i + j < totalLength / 2 + 2) {
+            if (i < nums1.length && j < nums2.length) {
+                if (nums1[i] < nums2[j]) {
+                    nums[i + j] = nums1[i];
+                    i++;
+                } else {
+                    nums[i + j] = nums2[j];
+                    j++;
+                }
+                continue;
+            }
+
+            if (i < nums1.length) {
+                nums[i + j] = nums1[i];
+                i++;
+                continue;
+            }
+
+            if (j < nums2.length) {
+                nums[i + j] = nums2[j];
+                j++;
+                continue;
+            }
+
+            break;
+        }
+
+        if ((totalLength & 1) == 0) {
+            return (double) (nums[totalLength / 2 - 1] + nums[totalLength / 2]) / 2;
+        }
+
+        return nums[totalLength / 2];
     }
 
     public static void testLengthOfLongestSubstring() {
@@ -47,7 +102,7 @@ class LeetCodeMainTests {
             head = subStrMap.get(tailChar) + 1;
 
             int finalHead = head;
-            subStrMap.entrySet().removeIf(item-> item.getValue() < finalHead);
+            subStrMap.entrySet().removeIf(item -> item.getValue() < finalHead);
 
             subStrMap.put(tailChar, tail);
 
